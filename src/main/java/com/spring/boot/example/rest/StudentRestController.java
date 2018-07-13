@@ -4,10 +4,7 @@ import com.spring.boot.example.bean.Student;
 import com.spring.boot.example.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,15 @@ public class StudentRestController {
     @PostMapping("/save")
     public void saveStudent(@RequestBody Student student){
         studentService.saveStudent(student);
+    }
+
+    @DeleteMapping("/{studentId}/delete")
+    public void delete(@PathVariable("studentId") Long id){
+        studentService.deleteStudent(id);
+    }
+
+    @PutMapping("/update")
+    public void updateStudent(@RequestBody Student student){
+        studentService.updateStudent(student);
     }
 }

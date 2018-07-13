@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by andriusbaltrunas on 7/12/2018.
@@ -30,5 +31,20 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void saveStudent(Student student) {
         studentServiceDao.save(student);
+    }
+
+    @Override
+    public void deleteStudent(Long id) {
+        studentServiceDao.deleteById(id);
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+        saveStudent(student);
+    }
+
+    @Override
+    public Student getStudent(Long id) {
+        return studentServiceDao.findById(id).get();
     }
 }

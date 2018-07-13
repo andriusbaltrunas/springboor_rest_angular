@@ -12,4 +12,10 @@ public interface StudentService {
     List<Student> getStudents();
 
     void saveStudent(Student student);
+
+    void deleteStudent(Long id);
+
+    void updateStudent(Student student);
+
+    Student getStudent(Long id);
 }

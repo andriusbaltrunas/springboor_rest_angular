@@ -31,6 +31,20 @@
                 $scope.alertMessage = "Student do not saved!!!";
             });
         }
+
+        $scope.delete = function(studentId){
+            $http({
+                url: "/"+studentId+"/delete",
+                method : "DELETE"
+            }).then(function(){
+                $scope.alertType = "alert-success";
+                $scope.alertMessage = "Student deleted successfully";
+                loadStudents($scope, $http);
+            }, function(response){
+                $scope.alertType = "alert-danger";
+                $scope.alertMessage = "Student do not deleted";
+            });
+        }
     });
 
 function loadStudents($scope, $http){
